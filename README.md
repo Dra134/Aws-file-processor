@@ -1,5 +1,5 @@
 # s3-sqs-client
-I am creating this solution to automate the modification of specific documents uploaded to s3 buckets
+I am creating this solution to automate the checking of log files for errors then placing the log files into a different prefix
 ## Features
-a simple method for automating log checking
-Automatically detects and checks files upon upload
+* A simple method for log checking
+* Automatically detects and checks files upon upload
