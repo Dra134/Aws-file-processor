@@ -3,4 +3,9 @@ This project uses AWS EventBridge to trigger an AWS Lambda function through an A
 ## Features
 * A simple method for log checking
 * Automatically detects and checks files upon upload
-* Uses SQS as an intermediary to decouple the S3 event
+* Uses SQS Fifo as an intermediary to decouple the S3 event
+## Flow
+* 1. A specific file is uploaded to the S3 bucket.
+* 2. S3 generates an Object Created event, which is captured by EventBridge.
+* 3. EventBridge filters the events based on the file name or key pattern and sends the events to the SQS Fifo queue.
+* 4. The Lambda function polls the SQS Fifo queue, processes the events, modifies the file content, and saves the modified file to the "errors" prefix in the same S3 bucket.
