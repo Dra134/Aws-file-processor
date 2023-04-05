@@ -11,8 +11,8 @@ This project uses AWS EventBridge to trigger an AWS Lambda function through an A
 3. EventBridge filters the events based on the file name or key pattern and sends the events to the SQS queue.
 4. The Lambda function polls the SQS queue, processes the events, modifies the file content, and saves the modified file to the "errors" prefix in the same S3 bucket.
 ## Low Level Design
-1. Amazon S3:A S3 bucket is used to store the files. When a file is uploaded an S# Object Created event is generated
-2. Amazon EventBridge: EventBridge is used to capture the S3 Object Created events and filter them based on the file name or key pattern. The filtered events are then sent to the SQS queue.
-3. Amazon SQS: An SQS queue is used as an intermediary between EventBridge and the Lambda function. It receives the filtered events from EventBridge and manages the rate at which the Lambda fucntion processes the events.
-4. AWS Lambda: A Lambda fucntion is responsible for processing the file upon receiving the event from the SQS queue. The function modifies the file content according to the specified rules and saves the modified file to the "Error" prefix in the same S3 bucket.
+1. A S3 bucket is used to store the files. When a file is uploaded an S# Object Created event is generated
+2. EventBridge is used to capture the S3 Object Created events and filter them based on the file name or key pattern. The filtered events are then sent to the SQS queue.
+3. An SQS queue is used as an intermediary between EventBridge and the Lambda function. It receives the filtered events from EventBridge and manages the rate at which the Lambda fucntion processes the events.
+4. A Lambda fucntion is responsible for processing the file upon receiving the event from the SQS queue. The function modifies the file content according to the specified rules and saves the modified file to the "Error" prefix in the same S3 bucket.
 ![Untitled Diagram](https://user-images.githubusercontent.com/101883275/230234952-d5c56284-fe86-4c5d-83f7-2dd07f1b8792.jpg)
