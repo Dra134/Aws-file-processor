@@ -1,10 +1,7 @@
 # AWS S3 File Processing
 This project uses AWS EventBridge to trigger an AWS Lambda function through an Amazon SQS queue when specific files are uploaded to an S3 bucket. The Lambda function then modifies the file content and saves the modified file to another prefix named "Errors" within the same bucket. The SQS layer helps manage the concurrency and rate at which the Lambda function processes events, providing better control over resource usage and scalability.
 ## Features
-* The system automatically responds to specific file uploads in the s3 bucket
-* The project leverages AWS managed services, which are desined to scale automatically
-* The use of SQS in the architecture provides built-in error handeling
-* The setup can be easily integrated with AWS monitoring and logging services
+By choosing AWS EventBridge, Amazon SQS, and AWS Lambda for this project, we provide a highly efficient, event-driven architecture that automatically reacts to file uploads in the S3 bucket, eliminating the need for resource-consuming polling methods. These managed services ensure scalability and performance with automatic scaling, letting you focus on the core functionality of file processing tasks without worrying about managing the infrastructure. The pay-per-use pricing model makes the solution cost-effective, especially for variable workloads, compared to running your own servers or containers with fixed costs. The integration of SQS offers built-in error handling and automatic retries, enhancing the system's resiliency, while the overall architecture promotes maintainability and seamless integration with the AWS ecosystem. In essence, this selection of services delivers a scalable, cost-effective, and maintainable solution that simplifies infrastructure management, making it an ideal choice for your file processing needs.
 ## High Level Design
 1. A specific file is uploaded to the S3 bucket.
 2. S3 generates an Object Created event, which is captured by EventBridge.
