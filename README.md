@@ -14,3 +14,4 @@ By choosing AWS EventBridge, Amazon SQS, and AWS Lambda for this project, it pro
 2. EventBridge is used to capture the S3 Object Created events and filter them based on the file name or key pattern. The filtered events are then sent to the SQS queue.
 3. An SQS queue is used as an intermediary between EventBridge and the Lambda function. It receives the filtered events from EventBridge and manages the rate at which the Lambda fucntion processes the events.
 4. A Lambda fucntion is responsible for processing the file upon receiving the event from the SQS queue. The function modifies the file content according to the specified rules and saves the modified file to the "Error" prefix in the same S3 bucket.
+![Untitled Diagram (1)](https://user-images.githubusercontent.com/101883275/231315708-3ca3047d-59e0-4849-acc0-9884b1c0a413.jpg)
